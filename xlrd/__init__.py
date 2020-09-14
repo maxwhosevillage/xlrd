@@ -39,7 +39,8 @@ def open_workbook(filename=None,
                   formatting_info=False,
                   on_demand=False,
                   ragged_rows=False,
-                  ignore_workbook_corruption=False
+                  ignore_workbook_corruption=False,
+                  override_biff_version = None,
                   ):
     """
     Open a spreadsheet file for data extraction.
@@ -165,6 +166,7 @@ def open_workbook(filename=None,
         on_demand=on_demand,
         ragged_rows=ragged_rows,
         ignore_workbook_corruption=ignore_workbook_corruption,
+        override_biff_version = override_biff_version
     )
     return bk
 

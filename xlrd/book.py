@@ -72,7 +72,8 @@ def open_workbook_xls(filename=None,
                       file_contents=None,
                       encoding_override=None,
                       formatting_info=False, on_demand=False, ragged_rows=False,
-                      ignore_workbook_corruption=False):
+                      ignore_workbook_corruption=False,
+                      override_biff_verison = None):
     t0 = perf_counter()
     if TOGGLE_GC:
         orig_gc_enabled = gc.isenabled()
@@ -100,6 +101,8 @@ def open_workbook_xls(filename=None,
                 % biff_text_from_num[biff_version]
             )
         bk.biff_version = biff_version
+        if override_biff_verison:
+            bk.biff_version = override_biff_verison
         if biff_version <= 40:
             # no workbook globals, only 1 worksheet
             if on_demand:
